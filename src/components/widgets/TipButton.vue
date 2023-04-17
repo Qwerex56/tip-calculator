@@ -50,6 +50,8 @@ export default {
     min-width: 100%;
     min-height: 100%;
 
+    border-radius: .25rem;
+
     background-color: $very-dark-cyan;
   
     &:checked {
