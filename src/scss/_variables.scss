@@ -1,1 +1,21 @@
-$bg-color-min: hsl(167, 80%, 52%);
+// ===== Colors =====
+// === Primary ===
+$strong-cyan: hsl(172, 67%, 45%);
+
+// === Neutral ===
+$very-dark-cyan: hsl(183, 100%, 15%);
+$dark-grayish-cyan: hsl(186, 14%, 43%);
+$grayish-cyan: hsl(184, 14%, 56%);
+$light-grayish-cyan: hsl(185, 41%, 84%);
+$very-light-grayish-cyan: hsl(189, 41%, 97%);
+$white: hsl(0, 0%, 100%);
+
+// ===== Typography =====
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+// === Body Copy ===
+$font-size-form-inputs: 1.5rem;
+
+// === Font ===
+$space-mono: 'Space Mono', monospace;
+$bold-weight: 700;
