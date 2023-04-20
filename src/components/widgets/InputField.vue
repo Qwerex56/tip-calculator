@@ -1,15 +1,30 @@
 <template>
   <div class="input-field">
-    <p class="input-field__type"><slot></slot></p>
+    <div class="input-field__head">
+      <p class="input-field__head__description"><slot></slot></p>
+      <p 
+        v-if="false"
+        class="input-field__head__error">
+          Cant't be zero
+      </p>
+    </div>
     <div class="input-field__input-section">
-      <input class="input-field__input-section__input" type="number">
-      <img class="input-field__input-section__icon" :src="imgSrc" alt="image">
+      <CustomInput 
+        class="input-field__input-section__input"
+        :class="{'error': false}"
+        p-holder="0"/>
+      <img class="input-field__input-section__icon" :src="imgSrc">
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import CustomInput from './CustomInput.vue';
+
 export default {
+  components: {
+    CustomInput,
+  },
   props: {
     imgSrc: {
       type: String,
@@ -24,42 +39,43 @@ export default {
   font-family: $space-mono;
   font-weight: $bold-weight;
   
-  &__type {
-    color: $dark-grayish-cyan;
+  &__head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &__description {
+      color: $dark-grayish-cyan;
+
+      margin-bottom: 0.5rem;
+    }
+  
+    &__error {
+      color: red;
+  
+      font-size: 1rem;
+    }
   }
+
 
   &__input-section {
     position: relative;
-
-    &__input {
-      appearance: none;
-
-      border-radius: .25rem;
-      border: none;
-      outline: none;
-
-      min-width: 100%;
-      min-height: 100%;
-
-      background-color: $very-light-grayish-cyan;
-      color: $very-dark-cyan;
-
-      font-family: inherit;
-      font-weight: inherit;
-      text-align: right;
-
-      &::-webkit-inner-spin-button,
-      &::-webkit-outer-spin-button {
-        appearance: none;
-      }
-      
-    }
     
+    &__input {
+      height: 48px;
+
+      &.error {
+        border: 2px solid red;
+      }
+    }
+
     &__icon {
-      position: absolute;  
-  
-      top: 50%; left: 0%;
+      position: absolute;
+      
+      top: 50%; left: 1rem;
       transform: translate(50%, -50%);
+      
+      height: 1rem;
     }
   }
 }

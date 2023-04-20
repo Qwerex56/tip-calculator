@@ -1,22 +1,27 @@
 <template>
   <div>
-    <TipButton :name="'some_name'" :tip-value="12.5"/>
-    <InputField :img-src="iconDollar">
-      bill
-    </InputField>
+    <InputSection/>
+    <TotalCard>
+      <template #description>
+        Tip Amount
+      </template>
+      <template #amount>
+        4.27
+      </template>
+    </TotalCard>
   </div>
 </template>
 
 <script lang="ts">
-import TipButton from './components/widgets/TipButton.vue';
-import InputField from './components/widgets/InputField.vue';
+import InputSection from './components/widgets/InputSection.vue';
+import TotalCard from './components/widgets/TotalCard.vue';
 
 import iconDollar from './assets/images/icon-dollar.svg';
 
 export default {
   components: {
-    TipButton,
-    InputField,
+    InputSection,
+    TotalCard,
   },
   data() {
     return {

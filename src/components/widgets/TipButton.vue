@@ -1,6 +1,6 @@
 <template>
   <div class="tip-btn">
-    <input class="tip-btn__checkbox"  type="radio" :name='name'>
+    <input class="tip-btn__checkbox"  type="radio" :name='name' @click="tipStore.setTipValue(tipValue)">
     <label class="tip-btn__label" :for='name'>
       {{ percentTipValue }}
     </label>
@@ -8,6 +8,9 @@
 </template>
 
 <script lang='ts'>
+import { mapStores } from 'pinia';
+import { useTipStore } from '@/modules/store/TipStore';
+
 export default {
   props: {
     name: {
@@ -23,6 +26,7 @@ export default {
     percentTipValue() {
       return this.tipValue.toString().concat('%');
     },
+    ...mapStores(useTipStore)
   },
 }
 </script>
