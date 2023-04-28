@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import CustomInput from './CustomInput.vue';
+import CustomInput from '@/components/CustomInput.vue';
 
 import { useTipStore } from '@/modules/store/TipStore';
 import { mapStores } from 'pinia';

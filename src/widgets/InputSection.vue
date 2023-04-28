@@ -34,8 +34,8 @@
 
 <script lang="ts">
 import InputField from './InputField.vue';
-import CustomInput from './CustomInput.vue';
-import TipButton from './TipButton.vue';
+import CustomInput from '@/components/CustomInput.vue';
+import TipButton from '@/components/TipButton.vue';
 
 import iconDollar from '@/assets/images/icon-dollar.svg';
 import iconPerson from '@/assets/images/icon-person.svg';
@@ -67,7 +67,9 @@ export default {
 
 <style lang="scss">
 .input-section {
-  // padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   font-family: $space-mono;
   font-weight: $bold-weight;

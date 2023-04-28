@@ -21,8 +21,8 @@
 </template>
 
 <script lang="ts">
-import TotalCard from './TotalCard.vue';
-import ResetButton from './ResetButton.vue';
+import TotalCard from '@/components/TotalCard.vue';
+import ResetButton from '@/components/ResetButton.vue';
 
 import { useTipStore } from '@/modules/store/TipStore';
 import { mapStores } from 'pinia';
