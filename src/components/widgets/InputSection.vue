@@ -1,6 +1,10 @@
 <template>
   <div class="input-section">
-    <InputField class="input-section__bill" :img-src="iconDollar">
+    <InputField 
+      class="input-section__bill" 
+      :img-src="iconDollar" 
+      :update-value="tipStoreUpdateValue.UPDATE_BILL"
+    >
       Bill
     </InputField>
     <p class="input-section__tip">Select Tip %</p>
@@ -10,9 +14,19 @@
       <TipButton name="tip-select" :tip-value="15"/>
       <TipButton name="tip-select" :tip-value="25"/>
       <TipButton name="tip-select" :tip-value="50"/>
-      <CustomInput p-holder="Custom"/>
+      <CustomInput 
+        p-holder="Custom"
+        @input-value-change="(val: string) => {
+          tipStore.setValue(val, tipStoreUpdateValue.UPDATE_TIP);
+        }"  
+      />
     </div>
-    <InputField class="input-section__people" :img-src="iconPerson">
+    <InputField 
+      class="input-section__people"
+      :img-src="iconPerson" 
+      :update-value="tipStoreUpdateValue.UPDATE_PERSON"
+      :is-error="tipStore.validatePeopleCount"
+    >
       Number of people
     </InputField>
   </div>
@@ -26,16 +40,25 @@ import TipButton from './TipButton.vue';
 import iconDollar from '@/assets/images/icon-dollar.svg';
 import iconPerson from '@/assets/images/icon-person.svg';
 
+import { useTipStore } from '@/modules/store/TipStore';
+import { mapStores } from 'pinia';
+
+import { UPDATE_TIP_STORE_VALUE } from '@/modules/enums/TipStoreTypesEnum';
+
 export default {
   components: {
     InputField,
     CustomInput,
     TipButton,
   },
+  computed: {
+    ...mapStores(useTipStore),
+  },
   data() {
     return {
       iconDollar: iconDollar,
       iconPerson: iconPerson,
+      tipStoreUpdateValue: UPDATE_TIP_STORE_VALUE
     }
   }
 }

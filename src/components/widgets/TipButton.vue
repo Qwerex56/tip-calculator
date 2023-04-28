@@ -1,6 +1,13 @@
 <template>
   <div class="tip-btn">
-    <input class="tip-btn__checkbox"  type="radio" :name='name' @click="tipStore.setTipValue(tipValue)">
+    <input 
+      class="tip-btn__checkbox"  
+      type="radio" 
+      :name='name'
+      @click="() => {
+        tipStore.setValue(tipValue.toString(), tipStoreUpdateValue.UPDATE_TIP);
+      }"
+    >
     <label class="tip-btn__label" :for='name'>
       {{ percentTipValue }}
     </label>
@@ -10,6 +17,7 @@
 <script lang='ts'>
 import { mapStores } from 'pinia';
 import { useTipStore } from '@/modules/store/TipStore';
+import { UPDATE_TIP_STORE_VALUE } from '@/modules/enums/TipStoreTypesEnum';
 
 export default {
   props: {
@@ -23,11 +31,16 @@ export default {
     }
   },
   computed: {
-    percentTipValue() {
+    percentTipValue(): string {
       return this.tipValue.toString().concat('%');
     },
     ...mapStores(useTipStore)
   },
+  data() {
+    return {
+      tipStoreUpdateValue: UPDATE_TIP_STORE_VALUE,
+    }
+  }
 }
 </script>
 <style scoped lang='scss'>

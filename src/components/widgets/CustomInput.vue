@@ -1,5 +1,10 @@
 <template>
-  <input type="number" class="custom-tip-input" :placeholder="pHolder"/>
+  <input
+    type="number"
+    class="custom-tip-input" 
+    :placeholder="pHolder"
+    @input="$emit('inputValueChange', ($event.target as HTMLInputElement).value)"
+  />
 </template>
 
 <script lang="ts">
@@ -8,8 +13,9 @@ export default {
     pHolder: {
       type: String,
       required: false,
-    }
-  }
+    },
+  },
+  emits: ['inputValueChange',]
 }
 </script>
 

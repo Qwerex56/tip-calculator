@@ -1,0 +1,5 @@
+export enum UPDATE_TIP_STORE_VALUE{
+  UPDATE_TIP = 1,
+  UPDATE_PERSON = 2,
+  UPDATE_BILL = 3,
+}

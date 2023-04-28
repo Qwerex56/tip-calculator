@@ -2,8 +2,8 @@
   <div class="input-field">
     <div class="input-field__head">
       <p class="input-field__head__description"><slot></slot></p>
-      <p 
-        v-if="false"
+      <p
+        v-if="isError"
         class="input-field__head__error">
           Cant't be zero
       </p>
@@ -11,8 +11,10 @@
     <div class="input-field__input-section">
       <CustomInput 
         class="input-field__input-section__input"
-        :class="{'error': false}"
-        p-holder="0"/>
+        :class="{'error': isError}"
+        p-holder="0"
+        @input-value-change="(val: string) => updateTipStoreValue(val)"
+      />
       <img class="input-field__input-section__icon" :src="imgSrc">
     </div>
   </div>
@@ -21,6 +23,12 @@
 <script lang="ts">
 import CustomInput from './CustomInput.vue';
 
+import { useTipStore } from '@/modules/store/TipStore';
+import { mapStores } from 'pinia';
+
+import type { UPDATE_TIP_STORE_VALUE } from '@/modules/enums/TipStoreTypesEnum';
+import type { PropType } from 'vue';
+
 export default {
   components: {
     CustomInput,
@@ -28,7 +36,24 @@ export default {
   props: {
     imgSrc: {
       type: String,
-      required: false
+      required: false,
+    },
+    updateValue: {
+      type: Object as PropType<UPDATE_TIP_STORE_VALUE>,
+      required: false,
+    },
+    isError: {
+      type: Boolean,
+      required: false,
+      default: false,
+    }
+  },
+  computed: {
+    ...mapStores(useTipStore),
+  },
+  methods: {
+    updateTipStoreValue(val: string) {
+      this.tipStore.setValue(val, this.updateValue)
     }
   }
 }

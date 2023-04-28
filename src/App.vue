@@ -6,7 +6,7 @@
         Tip Amount
       </template>
       <template #amount>
-        4.27
+        {{ tipStore.calculateTotalPerPerson.toFixed(2) }}
       </template>
     </TotalCard>
   </div>
@@ -15,6 +15,9 @@
 <script lang="ts">
 import InputSection from './components/widgets/InputSection.vue';
 import TotalCard from './components/widgets/TotalCard.vue';
+
+import { useTipStore } from './modules/store/TipStore';
+import { mapStores } from 'pinia';
 
 import iconDollar from './assets/images/icon-dollar.svg';
 
@@ -28,6 +31,9 @@ export default {
       iconDollar,
 
     }
+  },
+  computed: {
+    ...mapStores(useTipStore),
   }
 }
 </script>
