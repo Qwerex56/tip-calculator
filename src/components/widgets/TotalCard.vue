@@ -4,7 +4,7 @@
       <slot name="description">
 
       </slot><br>
-      <span class="total-card__description--person">/ preson</span>
+      <span class="total-card__description--person">/ person</span>
     </p>
     <p class="total-card__amount">
       <slot name="amount">
@@ -36,8 +36,6 @@ export default {
 
     &--person {
       color: $dark-grayish-cyan;
-
-      font-size: 0.5rem;
     }
   }
 

@@ -67,7 +67,7 @@ export default {
 
 <style lang="scss">
 .input-section {
-  padding: 2rem;
+  // padding: 2rem;
 
   font-family: $space-mono;
   font-weight: $bold-weight;
@@ -93,10 +93,6 @@ export default {
     height: 176px;
 
     font-size: 1.5rem;
-  }
-
-  &__people {
-    margin-bottom: 2rem;
   }
 }
 </style>

@@ -12,15 +12,25 @@ export const useTipStore = defineStore('tip', {
       }
       return error;
     },
-    calculateTotalPerPerson(state): number {
+    calculateTotalPerPerson(state): string {
       const total = state.billAmount + this.calculateTipAmount;
       
       if (state.personCount <= 0) {
-        return 0.00;
+        return (0).toFixed(2);
       }
       
       const totalPerPerson = total / state.personCount;
-      return totalPerPerson;
+      return totalPerPerson.toFixed(2);
+    },
+    calculateTipAmountPerPerson(state): string {
+      const tip = this.calculateTipAmount;
+
+      if (state.personCount <= 0) {
+        return (0).toFixed(2);
+      }
+
+      const tipPerPerson = tip / state.personCount;
+      return tipPerPerson.toFixed(2);
     },
     calculateTipAmount: (state): number => state.billAmount * (state.tipValue / 100),
   },
@@ -44,6 +54,11 @@ export const useTipStore = defineStore('tip', {
           this.billAmount = numVal;
         break;
       }
-    }
+    },
+    // resetStore(): void {
+    //   this.tipValue = 0.00;
+    //   this.personCount = 0;
+    //   this.billAmount = 0.00;
+    // },
   }
 })
