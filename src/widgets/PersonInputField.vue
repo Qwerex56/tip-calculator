@@ -13,9 +13,9 @@
         class="input-field__input-section__input"
         :class="{'error': isError}"
         p-holder="0"
-        @input-value-change="(val: string) => updateTipStoreValue(val)"
+        v-model="tipStore.personCount"
       />
-      <img class="input-field__input-section__icon" :src="imgSrc">
+      <img class="input-field__input-section__icon" :src="iconPerson">
     </div>
   </div>
 </template>
@@ -28,6 +28,8 @@ import { mapStores } from 'pinia';
 
 import type { UPDATE_TIP_STORE_VALUE } from '@/modules/enums/TipStoreTypesEnum';
 import type { PropType } from 'vue';
+
+import IconPerson from '@/assets/images/icon-person.svg';
 
 export default {
   components: {
@@ -46,6 +48,11 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    }
+  },
+  data() {
+    return {
+      iconPerson: IconPerson,
     }
   },
   computed: {

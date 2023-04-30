@@ -5,7 +5,7 @@
     </div>
     <div class="tip-calculator__app">
       <InputSectionVue/>
-      <TipTotalDisplayer/>
+      <TipTotalDisplayer class="tip-calculator__app__displayer"/>
     </div>
   </div>
 </template>
@@ -34,14 +34,34 @@ export default {
   display: flex;
   flex-direction: column;
 
-  padding: 1rem;
-  gap: 1rem;
+  gap: 2rem;
+
+  background-color: $light-grayish-cyan;
+
+  &__logo {
+    justify-self: center;
+    align-self: center;
+
+    padding-top: 2rem;
+  }
 
   &__app {
     display: flex;
     flex-direction: column;
+    
+    width: 100%;
 
+    padding-top: 2rem;
     gap: 2rem;
+    
+    border-radius: 1rem;
+
+    background-color: $white;
+
+    &__displayer {
+      margin: 1.5rem;
+      margin-top: 0;
+    }
   }
 }
 </style>

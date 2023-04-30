@@ -3,7 +3,8 @@
     type="number"
     class="custom-tip-input" 
     :placeholder="pHolder"
-    @input="$emit('inputValueChange', ($event.target as HTMLInputElement).value)"
+    :value="modelValue"
+    @input="$emit('update:modelValue', parseFloat(($event.target as HTMLInputElement).value))"
   />
 </template>
 
@@ -14,8 +15,12 @@ export default {
       type: String,
       required: false,
     },
+    modelValue: {
+      type: Number, 
+      required: false,
+    },
   },
-  emits: ['inputValueChange',]
+  emits: ['update:modelValue',]
 }
 </script>
 
