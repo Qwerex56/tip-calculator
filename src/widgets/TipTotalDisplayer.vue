@@ -16,7 +16,7 @@
           {{ tipStore.calculateTotalPerPerson }}
       </template>
     </TotalCard>
-    <ResetButton/>
+    <ResetButton class="tip-displayer__reset"/>
   </div>
 </template>
 
@@ -56,6 +56,14 @@ export default {
 
   &__total {
     margin-bottom: 2.25rem;
+  }
+
+  &__reset {
+    margin-top: auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    // padding: 3rem;
   }
 }
 </style>

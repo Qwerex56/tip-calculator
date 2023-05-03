@@ -1,1 +1,9 @@
 @use '@/scss/reset' as *;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $light-grayish-cyan;
+}

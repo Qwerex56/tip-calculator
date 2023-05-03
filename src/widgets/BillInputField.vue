@@ -68,6 +68,8 @@ export default {
 
 <style scoped lang="scss">
 .input-field {
+  width: 100%;
+
   font-family: $space-mono;
   font-weight: $bold-weight;
   

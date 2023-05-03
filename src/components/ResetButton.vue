@@ -38,6 +38,10 @@ export default {
     font-size: 1rem;
     font-weight: 700;
     text-align: center;
+
+    &:hover {
+      background-color: $light-grayish-cyan;
+    }
   }
 }
 </style>
