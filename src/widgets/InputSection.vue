@@ -10,12 +10,6 @@
       <TipButton name="tip-select" :tip-value="15"/>
       <TipButton name="tip-select" :tip-value="25"/>
       <TipButton name="tip-select" :tip-value="50"/>
-      <!-- <CustomInput 
-        p-holder="Custom"
-        @input-value-change="(val: string) => {
-          tipStore.setValue(val, tipStoreUpdateValue.UPDATE_TIP);
-        }"  
-      /> -->
       <CustomTipButton/>
     </div>
     <PersonInputField 
@@ -30,7 +24,6 @@
 <script lang="ts">
 import BillInputField from './BillInputField.vue';
 import PersonInputField from './PersonInputField.vue';
-import CustomInput from '@/components/CustomInput.vue';
 import CustomTipButton from '@/components/CustomTipButton.vue';
 import TipButton from '@/components/TipButton.vue';
 
@@ -46,7 +39,6 @@ export default {
   components: {
     BillInputField,
     PersonInputField,
-    CustomInput,
     CustomTipButton,
     TipButton,
   },
@@ -68,11 +60,11 @@ export default {
 .input-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  width: 100%;
 
   font-family: $space-mono;
   font-weight: $bold-weight;
-  
 
   &__bill {
     margin-bottom: 2rem;
@@ -86,7 +78,7 @@ export default {
   &__tip-selector {
     display: grid;
     
-    grid-template: repeat(3, 3rem) / repeat(2, 9.25rem);
+    grid-template: repeat(3, 1fr) / repeat(2, 1fr);
     gap: 1rem;
 
     margin-bottom: 2rem;
@@ -94,6 +86,18 @@ export default {
     height: 176px;
 
     font-size: 1.5rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    &__bill {
+      margin-bottom: 3rem;
+    }
+
+    &__tip-selector {
+      grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+      
+      margin-bottom: 3rem;
+    }
   }
 }
 </style>

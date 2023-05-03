@@ -1,13 +1,8 @@
 <template>
-  <div class="tip-calculator">
-    <div class="tip-calculator__logo">
-      <img src="@/assets/images/logo.svg" alt="">
-    </div>
     <div class="tip-calculator__app">
-      <InputSectionVue/>
+      <InputSectionVue class="tip-calculator__app__input"/>
       <TipTotalDisplayer class="tip-calculator__app__displayer"/>
     </div>
-  </div>
 </template>
 
 <script lang="ts">
@@ -30,37 +25,35 @@ export default {
 </script>
 
 <style lang="scss">
-.tip-calculator {
+.tip-calculator__app {
   display: flex;
   flex-direction: column;
-
+    
+  width: 100%;
   gap: 2rem;
+  padding: 2rem;
+    
+  border-radius: 1rem 1rem 0 0; 
 
-  background-color: $light-grayish-cyan;
+  background-color: $white;
 
-  &__logo {
+  &__displayer {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+
     justify-self: center;
     align-self: center;
 
-    padding-top: 2rem;
-  }
+    max-width: 920px;
+    max-height: 490px;
 
-  &__app {
-    display: flex;
-    flex-direction: column;
-    
-    width: 100%;
-
-    padding-top: 2rem;
-    gap: 2rem;
-    
     border-radius: 1rem;
 
-    background-color: $white;
-
-    &__displayer {
-      margin: 1.5rem;
-      margin-top: 0;
+    &__input {
+      padding: 1rem;
     }
   }
 }
